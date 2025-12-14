@@ -1,0 +1,24 @@
+{
+  "greetings": [
+    {
+      "id": "1",
+      "name": "Friend",
+      "message": "May your holidays be filled with warmth, joy, and all the magic of the season. Wishing you a wonderful Christmas and a Happy New Year!"
+    },
+    {
+      "id": "2",
+      "name": "Sarah",
+      "message": "Sending you love and warm wishes this Christmas. May your days be merry and bright, and may the new year bring you endless happiness!"
+    },
+    {
+      "id": "3",
+      "name": "Mom & Dad",
+      "message": "Thank you for all the love and joy you've given me. Wishing you the most magical Christmas filled with laughter and cherished moments together."
+    },
+    {
+      "id": "demo",
+      "name": "Dear Visitor",
+      "message": "Welcome to this festive greeting! Share personalized Christmas wishes by adding ?id=1, ?id=2, or ?id=3 to the URL. Merry Christmas!"
+    }
+  ]
+}
