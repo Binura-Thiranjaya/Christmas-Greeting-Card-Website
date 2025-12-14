@@ -87,6 +87,22 @@ export default {
           "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
           "50%": { transform: "translateY(-20px) rotate(5deg)" },
         },
+        snowfall: {
+          "0%": { 
+            transform: "translateY(-20px) translateX(0) rotate(0deg)",
+            opacity: "0"
+          },
+          "10%": {
+            opacity: "1"
+          },
+          "90%": {
+            opacity: "1"
+          },
+          "100%": { 
+            transform: "translateY(100vh) translateX(var(--wobble, 20px)) rotate(360deg)",
+            opacity: "0"
+          },
+        },
         twinkle: {
           "0%, 100%": { opacity: "1", transform: "scale(1)" },
           "50%": { opacity: "0.4", transform: "scale(0.8)" },
@@ -108,8 +124,12 @@ export default {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
         float: "float 6s ease-in-out infinite",
+        snowfall: "snowfall linear infinite",
         twinkle: "twinkle 2s ease-in-out infinite",
         "fade-in-up": "fade-in-up 0.8s ease-out forwards",
+        sway: "sway 3s ease-in-out infinite",
+        pulse: "pulse 8s ease-in-out infinite",
+      },
         sway: "sway 3s ease-in-out infinite",
         pulse: "pulse 8s ease-in-out infinite",
       },
