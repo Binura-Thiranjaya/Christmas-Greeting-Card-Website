@@ -19,26 +19,37 @@ interface Sparkle {
   delay: number;
 }
 
+interface Snowflake {
+  id: number;
+  left: number;
+  size: number;
+  duration: number;
+  delay: number;
+  opacity: number;
+  wobble: number;
+}
+
 const AnimatedBackground = () => {
   const [ornaments, setOrnaments] = useState<Ornament[]>([]);
   const [sparkles, setSparkles] = useState<Sparkle[]>([]);
+  const [snowflakes, setSnowflakes] = useState<Snowflake[]>([]);
 
   useEffect(() => {
     const colors = [
-      "hsl(350 75% 50%)", // Red
-      "hsl(145 55% 40%)", // Green
-      "hsl(40 95% 55%)",  // Gold
-      "hsl(350 70% 60%)", // Light red
-      "hsl(145 45% 50%)", // Light green
+      "hsl(350 75% 50%)",
+      "hsl(145 55% 40%)",
+      "hsl(40 95% 55%)",
+      "hsl(350 70% 60%)",
+      "hsl(145 45% 50%)",
     ];
 
     const types: ("ball" | "star" | "gift" | "candy")[] = ["ball", "star", "gift", "candy"];
 
-    const orns: Ornament[] = Array.from({ length: 15 }, (_, i) => ({
+    const orns: Ornament[] = Array.from({ length: 12 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       top: Math.random() * 100,
-      size: Math.random() * 40 + 30,
+      size: Math.random() * 35 + 25,
       color: colors[Math.floor(Math.random() * colors.length)],
       delay: Math.random() * 5,
       duration: Math.random() * 4 + 4,
@@ -46,14 +57,26 @@ const AnimatedBackground = () => {
     }));
     setOrnaments(orns);
 
-    const sparks: Sparkle[] = Array.from({ length: 30 }, (_, i) => ({
+    const sparks: Sparkle[] = Array.from({ length: 25 }, (_, i) => ({
       id: i,
       left: Math.random() * 100,
       top: Math.random() * 100,
-      size: Math.random() * 6 + 2,
+      size: Math.random() * 5 + 2,
       delay: Math.random() * 3,
     }));
     setSparkles(sparks);
+
+    // Create snowflakes
+    const flakes: Snowflake[] = Array.from({ length: 60 }, (_, i) => ({
+      id: i,
+      left: Math.random() * 100,
+      size: Math.random() * 8 + 4,
+      duration: Math.random() * 8 + 6,
+      delay: Math.random() * 10,
+      opacity: Math.random() * 0.5 + 0.3,
+      wobble: Math.random() * 30 - 15,
+    }));
+    setSnowflakes(flakes);
   }, []);
 
   const renderOrnament = (ornament: Ornament) => {
@@ -109,6 +132,26 @@ const AnimatedBackground = () => {
           animation: "pulse 8s ease-in-out infinite",
         }}
       />
+
+      {/* Falling snowflakes */}
+      {snowflakes.map((flake) => (
+        <div
+          key={`snow-${flake.id}`}
+          className="absolute text-christmas-cream"
+          style={{
+            left: `${flake.left}%`,
+            top: "-20px",
+            fontSize: flake.size,
+            opacity: flake.opacity,
+            animation: `snowfall ${flake.duration}s linear infinite`,
+            animationDelay: `${flake.delay}s`,
+            filter: "drop-shadow(0 0 2px hsl(210 30% 90%))",
+            ["--wobble" as string]: `${flake.wobble}px`,
+          }}
+        >
+          ❄
+        </div>
+      ))}
 
       {/* Floating ornaments */}
       {ornaments.map((ornament) => (
