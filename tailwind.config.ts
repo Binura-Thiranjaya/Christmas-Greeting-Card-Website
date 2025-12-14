@@ -14,7 +14,7 @@ export default {
     },
     extend: {
       fontFamily: {
-        serif: ['Cormorant Garamond', 'serif'],
+        sans: ['Poppins', 'sans-serif'],
         display: ['Playfair Display', 'serif'],
       },
       colors: {
@@ -66,7 +66,7 @@ export default {
           gold: "hsl(var(--christmas-gold))",
           green: "hsl(var(--christmas-green))",
           cream: "hsl(var(--christmas-cream))",
-          dark: "hsl(var(--christmas-dark))",
+          light: "hsl(var(--christmas-light))",
         },
       },
       borderRadius: {
@@ -83,30 +83,35 @@ export default {
           from: { height: "var(--radix-accordion-content-height)" },
           to: { height: "0" },
         },
-        snowfall: {
-          "0%": { transform: "translateY(-10vh) translateX(0)", opacity: "1" },
-          "100%": { transform: "translateY(100vh) translateX(20px)", opacity: "0.3" },
+        float: {
+          "0%, 100%": { transform: "translateY(0px) rotate(0deg)" },
+          "50%": { transform: "translateY(-20px) rotate(5deg)" },
         },
         twinkle: {
-          "0%, 100%": { opacity: "1" },
-          "50%": { opacity: "0.5" },
+          "0%, 100%": { opacity: "1", transform: "scale(1)" },
+          "50%": { opacity: "0.4", transform: "scale(0.8)" },
         },
         "fade-in-up": {
-          "0%": { opacity: "0", transform: "translateY(30px)" },
+          "0%": { opacity: "0", transform: "translateY(20px)" },
           "100%": { opacity: "1", transform: "translateY(0)" },
         },
-        "pulse-glow": {
-          "0%, 100%": { boxShadow: "0 0 30px hsl(45 80% 55% / 0.3)" },
-          "50%": { boxShadow: "0 0 50px hsl(45 80% 55% / 0.5)" },
+        sway: {
+          "0%, 100%": { transform: "rotate(-3deg)" },
+          "50%": { transform: "rotate(3deg)" },
+        },
+        pulse: {
+          "0%, 100%": { opacity: "0.3" },
+          "50%": { opacity: "0.5" },
         },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
-        snowfall: "snowfall linear infinite",
+        float: "float 6s ease-in-out infinite",
         twinkle: "twinkle 2s ease-in-out infinite",
         "fade-in-up": "fade-in-up 0.8s ease-out forwards",
-        "pulse-glow": "pulse-glow 3s ease-in-out infinite",
+        sway: "sway 3s ease-in-out infinite",
+        pulse: "pulse 8s ease-in-out infinite",
       },
     },
   },
