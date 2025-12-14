@@ -16,9 +16,9 @@ const Index = () => {
   const [greeting, setGreeting] = useState<Greeting | null>(null);
 
   useEffect(() => {
-    const id = searchParams.get("id") || "demo";
+    const id = searchParams.get("id") || "public";
     const found = greetingsData.greetings.find((g) => g.id === id);
-    setGreeting(found || greetingsData.greetings.find((g) => g.id === "demo") || null);
+    setGreeting(found || greetingsData.greetings.find((g) => g.id === "public") || null);
   }, [searchParams]);
 
   return (
@@ -28,32 +28,50 @@ const Index = () => {
 
       {/* Main content */}
       <main className="relative z-20 min-h-screen flex flex-col items-center justify-center py-12 px-4">
+
         {/* Header */}
-        <div className="mb-10 text-center animate-fade-in-up" style={{ opacity: 0 }}>
-          <div className="flex items-center justify-center gap-2 mb-2">
+        <div
+          className="mb-10 text-center animate-fade-in-up"
+          style={{ opacity: 0 }}
+        >
+          <div className="flex items-center justify-center gap-2 mb-3">
             <span className="text-3xl">🔔</span>
             <span className="text-3xl">🎄</span>
             <span className="text-3xl">🔔</span>
           </div>
-          <p className="text-muted-foreground text-sm tracking-[0.2em] uppercase font-medium">
-            Season's Greetings
+
+          <p className="text-muted-foreground text-sm tracking-[0.25em] uppercase font-medium">
+            Season’s Greetings
           </p>
         </div>
 
         {/* Christmas Card */}
         {greeting && (
-          <ChristmasCard name={greeting.name} message={greeting.message} />
+          <div
+            className="animate-fade-in-up"
+            style={{ animationDelay: "0.4s", opacity: 0 }}
+          >
+            <ChristmasCard
+              name={greeting.name}
+              message={greeting.message}
+            />
+          </div>
         )}
 
         {/* Footer */}
-        <footer className="mt-12 text-center animate-fade-in-up" style={{ animationDelay: "1s", opacity: 0 }}>
-          <p className="text-muted-foreground/70 text-sm flex items-center justify-center gap-2">
-            <span>Share the joy</span>
+        <footer
+          className="mt-12 text-center animate-fade-in-up"
+          style={{ animationDelay: "1s", opacity: 0 }}
+        >
+          <p className="text-muted-foreground/70 text-sm flex flex-wrap items-center justify-center gap-2">
+            <span>🎄 A small wish, sent with a big heart ❤️</span>
             <span>•</span>
-            <span>Try <code className="text-primary bg-primary/10 px-2 py-0.5 rounded">?id=1</code></span>
+            <span>With love, Binura ✨</span>
           </p>
         </footer>
+
       </main>
+
 
       {/* Music Player */}
       <MusicPlayer />

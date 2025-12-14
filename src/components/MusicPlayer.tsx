@@ -5,7 +5,7 @@ const MusicPlayer = () => {
   const [isPlaying, setIsPlaying] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
 
-  const musicUrl = "https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3";
+  const musicUrl = "/music/christmas.mp3"; // 🎄 Christmas song
 
   useEffect(() => {
     if (audioRef.current) {

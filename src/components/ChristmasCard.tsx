@@ -1,61 +1,87 @@
-import { Sparkles } from "lucide-react";
-
 interface ChristmasCardProps {
-  name: string;
+  name?: string;
   message: string;
 }
 
 const ChristmasCard = ({ name, message }: ChristmasCardProps) => {
+  const displayName = name?.trim();
+
   return (
     <div className="relative w-full max-w-2xl mx-auto px-4">
-      {/* Decorative holly */}
-      <div className="absolute -top-6 left-1/2 -translate-x-1/2 text-4xl animate-float" style={{ animationDuration: "4s" }}>
+
+      {/* Decorative top icon */}
+      <div
+        className="absolute -top-6 left-1/2 -translate-x-1/2 text-4xl animate-float"
+        style={{ animationDuration: "4s" }}
+        aria-hidden
+      >
         🎄
       </div>
 
       {/* Main card */}
       <div className="card-glass rounded-3xl p-8 md:p-12 border border-primary/10 relative overflow-hidden">
+
         {/* Decorative corners */}
-        <div className="absolute top-4 left-4 text-2xl opacity-60">❄️</div>
-        <div className="absolute top-4 right-4 text-2xl opacity-60">❄️</div>
-        <div className="absolute bottom-4 left-4 text-2xl opacity-60">🌟</div>
-        <div className="absolute bottom-4 right-4 text-2xl opacity-60">🌟</div>
+        <div className="absolute top-4 left-4 text-2xl opacity-60" aria-hidden>❄️</div>
+        <div className="absolute top-4 right-4 text-2xl opacity-60" aria-hidden>❄️</div>
+        <div className="absolute bottom-4 left-4 text-2xl opacity-60" aria-hidden>🌟</div>
+        <div className="absolute bottom-4 right-4 text-2xl opacity-60" aria-hidden>🌟</div>
 
         {/* Content */}
         <div className="relative z-10 text-center space-y-6">
+
           {/* Greeting header */}
-          <div className="space-y-3 animate-fade-in-up" style={{ animationDelay: "0.2s", opacity: 0 }}>
+          <div
+            className="space-y-3 animate-fade-in-up"
+            style={{ animationDelay: "0.2s", opacity: 0 }}
+          >
             <p className="text-secondary font-medium text-sm tracking-[0.3em] uppercase">
               ✨ Merry Christmas ✨
             </p>
-            <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-gradient-festive font-bold">
-              {name}
-            </h1>
+
+            {displayName && (
+              <h1 className="font-display text-4xl md:text-5xl lg:text-6xl text-gradient-festive font-bold">
+                {displayName}
+              </h1>
+            )}
           </div>
 
           {/* Decorative divider */}
-          <div className="flex items-center justify-center gap-4 animate-fade-in-up" style={{ animationDelay: "0.4s", opacity: 0 }}>
+          <div
+            className="flex items-center justify-center gap-4 animate-fade-in-up"
+            style={{ animationDelay: "0.4s", opacity: 0 }}
+            aria-hidden
+          >
             <div className="h-px w-12 bg-gradient-to-r from-transparent to-primary/40" />
             <span className="text-xl">🎅</span>
             <div className="h-px w-12 bg-gradient-to-l from-transparent to-primary/40" />
           </div>
 
           {/* Message */}
-          <p className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-lg mx-auto animate-fade-in-up" style={{ animationDelay: "0.6s", opacity: 0 }}>
+          <p
+            className="text-lg md:text-xl text-foreground/80 leading-relaxed max-w-lg mx-auto animate-fade-in-up"
+            style={{ animationDelay: "0.6s", opacity: 0 }}
+          >
             {message}
           </p>
 
           {/* Footer decorations */}
-          <div className="pt-4 flex items-center justify-center gap-3 animate-fade-in-up" style={{ animationDelay: "0.8s", opacity: 0 }}>
+          <div
+            className="pt-4 flex items-center justify-center gap-3 animate-fade-in-up"
+            style={{ animationDelay: "0.8s", opacity: 0 }}
+            aria-hidden
+          >
             <span className="text-2xl">🎁</span>
-            <span className="font-display text-lg text-primary font-medium">2024</span>
+            <span className="font-display text-lg text-primary font-medium">
+              {new Date().getFullYear()}
+            </span>
             <span className="text-2xl">🎄</span>
           </div>
         </div>
       </div>
 
       {/* Bottom sparkles */}
-      <div className="flex justify-center mt-6 gap-3">
+      <div className="flex justify-center mt-6 gap-3" aria-hidden>
         {["❄️", "⭐", "❄️", "⭐", "❄️"].map((emoji, i) => (
           <span
             key={i}
@@ -66,6 +92,7 @@ const ChristmasCard = ({ name, message }: ChristmasCardProps) => {
           </span>
         ))}
       </div>
+
     </div>
   );
 };
