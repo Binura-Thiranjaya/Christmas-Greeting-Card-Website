@@ -1,0 +1,150 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+/* Christmas Wish Card Design System */
+
+@layer base {
+  :root {
+    /* Winter Night Background */
+    --background: 220 40% 8%;
+    --foreground: 40 33% 95%;
+
+    /* Card surfaces */
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 13%;
+
+    /* Popover */
+    --popover: 220 30% 12%;
+    --popover-foreground: 40 33% 95%;
+
+    /* Christmas Red - Primary */
+    --primary: 0 72% 45%;
+    --primary-foreground: 40 33% 98%;
+
+    /* Forest Green - Secondary */
+    --secondary: 145 45% 28%;
+    --secondary-foreground: 40 33% 98%;
+
+    /* Gold Accent */
+    --accent: 43 85% 55%;
+    --accent-foreground: 220 40% 10%;
+
+    /* Muted winter tones */
+    --muted: 220 25% 18%;
+    --muted-foreground: 220 15% 65%;
+
+    /* Destructive */
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 40 33% 98%;
+
+    /* Borders */
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 43 85% 55%;
+
+    --radius: 1rem;
+
+    /* Custom Christmas tokens */
+    --snow: 200 20% 95%;
+    --crimson: 0 72% 45%;
+    --crimson-glow: 0 72% 55%;
+    --gold: 43 85% 55%;
+    --gold-glow: 43 90% 65%;
+    --forest: 145 45% 28%;
+    --night-sky: 220 40% 8%;
+    --frost: 200 30% 85%;
+
+    /* Glassmorphism */
+    --glass-bg: 220 30% 15% / 0.6;
+    --glass-border: 220 20% 30% / 0.3;
+
+    /* Shadows */
+    --shadow-glow: 0 0 40px hsl(43 85% 55% / 0.3);
+    --shadow-card: 0 25px 50px -12px hsl(0 0% 0% / 0.5);
+
+    /* Sidebar - keeping for compatibility */
+    --sidebar-background: 220 40% 10%;
+    --sidebar-foreground: 40 33% 95%;
+    --sidebar-primary: 0 72% 45%;
+    --sidebar-primary-foreground: 40 33% 98%;
+    --sidebar-accent: 220 25% 18%;
+    --sidebar-accent-foreground: 40 33% 95%;
+    --sidebar-border: 220 20% 20%;
+    --sidebar-ring: 43 85% 55%;
+  }
+
+  .dark {
+    --background: 220 40% 8%;
+    --foreground: 40 33% 95%;
+    --card: 0 0% 100%;
+    --card-foreground: 220 40% 13%;
+    --popover: 220 30% 12%;
+    --popover-foreground: 40 33% 95%;
+    --primary: 0 72% 45%;
+    --primary-foreground: 40 33% 98%;
+    --secondary: 145 45% 28%;
+    --secondary-foreground: 40 33% 98%;
+    --accent: 43 85% 55%;
+    --accent-foreground: 220 40% 10%;
+    --muted: 220 25% 18%;
+    --muted-foreground: 220 15% 65%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 40 33% 98%;
+    --border: 220 20% 20%;
+    --input: 220 20% 20%;
+    --ring: 43 85% 55%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Poppins', sans-serif;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-[hsl(var(--glass-bg))] backdrop-blur-xl border border-[hsl(var(--glass-border))];
+  }
+
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-[hsl(var(--gold))] via-[hsl(var(--frost))] to-[hsl(var(--gold))] bg-clip-text text-transparent;
+  }
+
+  .glow-gold {
+    box-shadow: var(--shadow-glow);
+  }
+
+  .card-shadow {
+    box-shadow: var(--shadow-card);
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .transform-style-3d {
+    transform-style: preserve-3d;
+  }
+
+  .backface-hidden {
+    backface-visibility: hidden;
+  }
+
+  .rotate-y-180 {
+    transform: rotateY(180deg);
+  }
+}
